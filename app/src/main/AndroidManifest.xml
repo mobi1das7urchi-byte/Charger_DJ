@@ -22,7 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ChargerDJ">
         <activity
-            android:name=".MainActivity"
+            android:name=".presentation.ui.screen.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +32,7 @@
         </activity>
 
         <service
-            android:name=".power.ChargerSoundService"
+            android:name=".presentation.power.ChargerSoundService"
             android:exported="false"
             android:foregroundServiceType="mediaPlayback" />
     </application>

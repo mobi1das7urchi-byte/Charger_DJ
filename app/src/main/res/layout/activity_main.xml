@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:fillViewport="true"
-    tools:context=".MainActivity">
+    tools:context=".presentation.ui.screen.activity.MainActivity">
 
     <LinearLayout
         android:id="@+id/contentLayout"
@@ -106,6 +106,7 @@
                 android:textSize="15sp" />
 
             <LinearLayout
+                android:id="@+id/layout_battery_row"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/shape_oval_radius"
@@ -117,13 +118,14 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_battery_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:cardCornerRadius="38dp"
-                    android:backgroundTint="@color/vivid_red"
                     app:strokeWidth="0dp">
 
                     <ImageView
+                        android:id="@+id/iv_battery_status"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/icon_battery_uncharged"
@@ -134,6 +136,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <TextView
+                    android:id="@+id/tv_battery_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Zaryadlanmoqda"
@@ -149,9 +152,10 @@
                     />
 
                 <TextView
+                    android:id="@+id/tv_battery_percent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="72%"
+                    android:text="0%"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:textStyle="bold"
@@ -179,6 +183,7 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/shape_oval_radius"
             android:elevation="4dp"
+            android:visibility="visible"
             android:orientation="vertical"
             android:padding="20dp">
 
@@ -223,7 +228,7 @@
                     />
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/btn_add"
+                    android:id="@+id/btn_add_charging"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Ovoz qo'shish"
@@ -248,9 +253,98 @@
                 />
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_charging"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_audios"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/shape_oval_radius"
+            android:elevation="4dp"
+            android:visibility="visible"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_oval_radius"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="38dp"
+                    android:backgroundTint="@color/white_red"
+                    app:strokeWidth="0dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="9dp"
+                        android:src="@drawable/icon_battery_uncharged"
+                        app:tint="@color/vivid_red" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ulanmaganda"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginStart="12dp"
+                    />
+
+                <View
+                    android:layout_weight="1"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btn_add_uncharged"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ovoz qo'shish"
+                    android:textAllCaps="false"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    android:drawableStart="@drawable/icon_play_circle"
+                    android:background="@drawable/shape_oval_btn"
+                    android:backgroundTint="@color/black"
+                    android:padding="12dp"
+                    android:layout_marginStart="15dp"
+                    android:drawablePadding="5dp"
+                    />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/gray"
+                android:layout_marginTop="15dp"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_uncharged"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_audios"
                 />
 
         </LinearLayout>

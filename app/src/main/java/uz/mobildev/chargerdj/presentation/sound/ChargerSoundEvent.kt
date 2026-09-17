@@ -1,4 +1,4 @@
-package uz.mobildev.chargerdj.sound
+package uz.mobildev.chargerdj.presentation.sound
 
 enum class ChargerSoundEvent(
     val extraValue: String,

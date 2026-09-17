@@ -1,13 +1,13 @@
-package uz.mobildev.chargerdj.power
+package uz.mobildev.chargerdj.presentation.power
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import uz.mobildev.chargerdj.sound.ChargerSoundEvent
-import uz.mobildev.chargerdj.sound.ChargerSoundPlayer
-import uz.mobildev.chargerdj.sound.ChargerSoundSettings
+import uz.mobildev.chargerdj.presentation.sound.ChargerSoundEvent
+import uz.mobildev.chargerdj.presentation.sound.ChargerSoundPlayer
+import uz.mobildev.chargerdj.presentation.sound.ChargerSoundSettings
 
-class PowerConnectionReceiver : BroadcastReceiver() {
+class PowerConnectionReceiver : android.content.BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
         if (!ChargerSoundSettings.isServiceEnabled(context)) return
 

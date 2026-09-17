@@ -1,4 +1,4 @@
-package uz.mobildev.chargerdj.power
+package uz.mobildev.chargerdj.presentation.power
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -11,7 +11,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import uz.mobildev.chargerdj.R
 
-class ChargerSoundService : Service() {
+class ChargerSoundService : android.app.Service() {
     private val powerConnectionReceiver = PowerConnectionReceiver()
     private var receiverRegistered = false
 
