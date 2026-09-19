@@ -3,6 +3,7 @@ package uz.mobildev.chargerdj.presentation.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -23,6 +24,11 @@ class VoiceAdapter(
             tvVoiceType.text = item.type
             btnPlay.visibility = if (item.canPlay) View.VISIBLE else View.GONE
 
+            radioVoice.isChecked = item.isSelected
+            radioVoice.buttonTintList = ContextCompat.getColorStateList(
+                root.context,
+                R.color.voice_check_tint,
+            )
             radioVoice.setButtonDrawable(
                 if (item.isSelected) {
                     R.drawable.icon_check_circle

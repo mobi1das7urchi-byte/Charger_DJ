@@ -1,6 +1,7 @@
 package uz.mobildev.chargerdj.presentation.ui.screen.activity
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
@@ -11,7 +12,9 @@ import android.os.BatteryManager
 import android.os.Build
 import android.os.Bundle
 import android.provider.OpenableColumns
+import android.provider.Settings
 import android.widget.Toast
+import androidx.core.net.toUri
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -154,6 +157,12 @@ class MainActivity : AppCompatActivity() {
         binding.btnAddUncharged.setOnClickListener {
             audioPickerTarget = ChargerSoundEvent.Disconnected
             requestAudioPermissionThenOpenPicker()
+        }
+        binding.btnBatteryOptimization.setOnClickListener {
+            openBatteryOptimizationSettings()
+        }
+        binding.btnAppHibernation.setOnClickListener {
+            openAppSettings()
         }
     }
 
@@ -341,6 +350,26 @@ class MainActivity : AppCompatActivity() {
 
     private fun openAudioPicker() {
         audioPicker.launch(arrayOf("audio/*"))
+    }
+
+    @SuppressLint("BatteryLife")
+    private fun openBatteryOptimizationSettings() {
+        val packageUri = "package:$packageName".toUri()
+        val requestIntent = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS, packageUri)
+        runCatching {
+            startActivity(requestIntent)
+        }.onFailure {
+            startActivity(Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS))
+        }
+    }
+
+    private fun openAppSettings() {
+        startActivity(
+            Intent(
+                Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                "package:$packageName".toUri(),
+            ),
+        )
     }
 
     private fun isAudioUri(uri: Uri): Boolean {

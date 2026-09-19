@@ -11,7 +11,7 @@
     <string name="service_paused">Xizmat to\'xtatilgan</string>
     <string name="connect_sound">ULANGANDA CHALINADIGAN OVOZ</string>
     <string name="disconnect_sound">UZILGANDA CHALINADIGAN OVOZ</string>
-    <string name="system">TIZIM SOZLAMALARI</string>
+    <string name="system">Sozlamalar</string>
     <string name="show_sounds">Ovozlarni ko\'rsatish</string>
     <string name="hide_sounds">Ovozlarni yashirish</string>
     <string name="add">+ Qo\'shish</string>
